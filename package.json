@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose", 
+    "test:watch": "npm run test --  --watch"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,9 @@
   },
   "homepage": "https://github.com/eringurley/Oops-Files#readme",
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "just": "^0.1.8"
+    "eslint": "^6.0.1"
+  },
+  "dependencies": {
+    "jest": "^24.8.0"
   }
 }
