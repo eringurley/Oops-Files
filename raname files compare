@@ -9,6 +9,8 @@ const rename = (path, newPath, callback) => {
   fs.rename(path, newPath, callback);
 };
 
+// short circuit
+// false && true
 const getModifiedTime = (path, callback) => {
   fs.stat(path, (err, stats) => {
     callback(err, stats && stats.mtime.toISOString());
@@ -29,6 +31,10 @@ const renameEverything = (directory, callback) => {
         if(err) return callback(err);
         getModifiedTime(`${directory}/${file}`, (err, modifiedTime) => {
           if(err) return callback(err);
+          // 99.txt
+          // [99, txt]
+          // 0
+          // file.replace('.txt', '');
           const number = file.split('.')[0];
           rename(`${directory}/${file}`, `${directory}/${fileContent}-${number}-${modifiedTime}`, err => {
             if(err) return callback(err);
@@ -45,7 +51,7 @@ const renameEverything = (directory, callback) => {
 module.exports = {
   readDirectory,
   rename,
-  getModifiedTime, 
+  getModifiedTime,
   readFile,
   renameEverything
 };
