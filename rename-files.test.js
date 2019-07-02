@@ -3,6 +3,10 @@ const { createFiles } = require('./create-files');
 const { readDirectory, rename, readFile, getModifiedTime } = require('./rename-files');
 
 describe('rename functions', () => {
+  beforeAll(done => {
+    fs.mkdir('./fixtures', done);
+  });
+
   beforeEach(done => {
     createFiles('./fixtures', 100, done);
   });
@@ -12,8 +16,6 @@ describe('rename functions', () => {
     fs.readdir('./fixtures', (err, files) => {
       if(files.length === 0) done();
       let deletedSoFar = 0;
-      // [0.txt, 1.txt, 2.txt, ...]
-      // for each file
       files.forEach(file => {
         // delete it
         fs.unlink(`./fixtures/${file}`, err => {
@@ -62,6 +64,20 @@ it('gets the contents of a file', done => {
     readFile('./fixtures/0.txt', (err, resultContent) => {
       expect(err).toBeFalsy();
       expect(resultContent).toEqual(expectedContent);
+      done();
+    });
+  });
+});
+
+it('renames all files in a directoryto content-fileNumber-date',  done => {
+  renameEverything('./fixtures', err => {
+    expect(err).toBeFalsy();
+
+    fs.readdir('.fixtures', (err, files)  => {
+      expect(files).toHaveLength(100);
+      files.forEach(file => {
+        expect(file).toMatch(/\w+-\d+-\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z/);        
+      });
       done();
     });
   });
