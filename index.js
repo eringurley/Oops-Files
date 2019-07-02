@@ -1,22 +1,11 @@
-// const fs = require('fs');
+const { renameEverything } = require('./rename-files');
 
+const directory = process.argv[2];
 
-// console.log(randomWord, 'randomWord');
+renameEverything(directory, err => {
+  if(err) return console.error(err);
 
-// const createFile = () => {
-//   for(let i = 0; i < 100; i++) {
-//     const nameArray = ['dinosaur', 'dragon', 'drake', 'elemental','goblin', 'planeswalker', 'shade', 'weird', 'wizard'];
-//     const randomWord = nameArray[Math.floor(Math.random() * nameArray.length)];
-//     fs.writeFile(`./new-files/{i}.txt`, randomWord, (err) => {
-//       if(err) {
-//         console.log(err);
-//       }
-//     });
-//   };
-// };
-
-// createFile();
-
-// module.exports = { randomWord, createFile };
+  console.log('Your files have been renamed!!');
+});
 
 
