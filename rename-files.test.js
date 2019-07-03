@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { createFiles } = require('./create-files');
-const { readDirectory, rename, readFile, getModifiedTime } = require('./rename-files');
+const { readDirectory, rename, readFile, getModifiedTime, renameEverything } = require('./rename-files');
 
 describe('rename functions', () => {
   beforeAll(done => {
