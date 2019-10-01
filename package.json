@@ -1,24 +1,26 @@
 {
-  "name": "Oops-Files",
+  "name": "oops-files",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose --runInBand",
+    "test:watch": "npm run test -- --watch",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eringurley/Oops-Files.git"
+    "url": "git+https://github.com/alchemy-fullstack-js-summer-2019/oops-files.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eringurley/Oops-Files/issues"
+    "url": "https://github.com/alchemy-fullstack-js-summer-2019/oops-files/issues"
   },
-  "homepage": "https://github.com/eringurley/Oops-Files#readme",
+  "homepage": "https://github.com/alchemy-fullstack-js-summer-2019/oops-files#readme",
   "devDependencies": {
     "eslint": "^6.0.1",
-    "just": "^0.1.8"
+    "jest": "^24.8.0"
   }
 }
